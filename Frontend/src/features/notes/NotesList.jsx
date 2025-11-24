@@ -10,10 +10,12 @@ function NotesList() {
   }, []);
 
   return (
-    <div className="grid gap-4 p-4">
-      {notes.map(note => (
-        <NoteCard key={note._id} note={note} />
-      ))}
+    <div className="p-4 bg-gray-50 dark:bg-gray-900 min-h-screen transition-colors">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {notes.map(note => (
+          <NoteCard key={note._id} note={note} />
+        ))}
+      </div>
     </div>
   );
 }
