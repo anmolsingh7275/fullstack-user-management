@@ -9,17 +9,27 @@ export function AuthProvider({ children }) {
   );
 
   async function login(data) {
-    const res = await api.post("/auth/login", data);
-    setUser(res.data.user);
-    localStorage.setItem("user", JSON.stringify(res.data.user));
-    localStorage.setItem("token", res.data.token);
+    try {
+      const res = await api.post("/auth/login", data);
+      setUser(res.data.user);
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+      localStorage.setItem("token", res.data.token);
+    } catch (err) {
+      console.error("LOGIN ERROR:", err.response?.data || err.message);
+      throw err;
+    }
   }
 
   async function registerUser(data) {
-    const res = await api.post("/auth/register", data);
-    setUser(res.data.user);
-    localStorage.setItem("user", JSON.stringify(res.data.user));
-    localStorage.setItem("token", res.data.token);
+    try {
+      const res = await api.post("/auth/register", data);
+      setUser(res.data.user);
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+      localStorage.setItem("token", res.data.token);
+    } catch (err) {
+      console.error("REGISTER ERROR:", err.response?.data || err.message);
+      throw err;
+    }
   }
 
   function logout() {

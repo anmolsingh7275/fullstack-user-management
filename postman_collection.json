@@ -1,0 +1,57 @@
+{
+  "info": {
+    "name": "MERN Notes App",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Anmol\",\n  \"email\": \"test@example.com\",\n  \"password\": \"123456\"\n}"
+        },
+        "url": "http://localhost:5000/api/auth/register"
+      }
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"123456\"\n}"
+        },
+        "url": "http://localhost:5000/api/auth/login"
+      }
+    },
+    {
+      "name": "Create Note",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Test Note\",\n  \"content\": \"Hello world\"\n}"
+        },
+        "url": "http://localhost:5000/api/notes"
+      }
+    },
+    {
+      "name": "Get Notes",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": "http://localhost:5000/api/notes"
+      }
+    }
+  ]
+}
